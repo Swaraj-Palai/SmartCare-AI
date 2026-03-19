@@ -65,7 +65,7 @@ const SchemesScreen: React.FC<{ isOnline: boolean }> = ({ isOnline }) => {
       setSchemes(result);
     } catch (error) {
       console.error('Schemes fetch failed:', error);
-      alert('Could not fetch schemes. Please try again.');
+      alert(`Could not fetch schemes: ${error instanceof Error ? error.message : String(error)}. Please try again.`);
     } finally {
       setLoading(false);
     }

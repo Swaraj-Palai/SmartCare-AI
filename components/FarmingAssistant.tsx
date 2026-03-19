@@ -238,6 +238,7 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
       }
     } catch (error: any) {
       console.error('Diagnosis failed:', error);
+      alert(`Diagnosis failed: ${error?.message || String(error)}`);
       
       const isQuotaError = error?.message?.includes('exceeded') || error?.status === 429;
       

@@ -125,7 +125,7 @@ const HealthAssistant: React.FC<HealthAssistantProps> = ({ isOnline }) => {
       }
     } catch (error) {
       console.error('Health analysis failed:', error);
-      alert('Could not complete analysis. Please try again.');
+      alert(`Could not complete analysis: ${error instanceof Error ? error.message : String(error)}. Please try again.`);
     } finally {
       setLoading(false);
     }
