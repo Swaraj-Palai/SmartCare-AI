@@ -80,7 +80,7 @@ const HealthAssistant: React.FC<HealthAssistantProps> = ({ isOnline }) => {
     try {
       const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-1.5-flash",
         contents: {
           parts: [
             attachment ? { inlineData: { mimeType: attachment.mimeType, data: attachment.data } } : { text: '' },

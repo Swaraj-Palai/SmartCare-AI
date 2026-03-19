@@ -197,7 +197,7 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
         Format as JSON in ${language.name}.` });
 
       const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash',
+        model: 'gemini-1.5-flash',
         contents: { parts: contentParts },
         config: {
           responseMimeType: 'application/json',
@@ -265,7 +265,7 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
     try {
       const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
       const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash-preview-tts",
+        model: "gemini-1.5-flash",
         contents: [{ parts: [{ text: `Speak warmly in ${language.name}: ${text}` }] }],
         config: {
           responseModalities: [Modality.AUDIO],

@@ -33,9 +33,9 @@ const SchemesScreen: React.FC<{ isOnline: boolean }> = ({ isOnline }) => {
 
     setLoading(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-1.5-flash',
         contents: {
           parts: [{ text: `Based on this user profile/query: "${profileInput}", act as a Gov Schemes Advisor. Return 5 highly relevant active government schemes (mix of Farming and Health, depending on the query). Format as JSON in ${language.name}. Don't invent schemes, use real Indian government ones.` }]
         },
