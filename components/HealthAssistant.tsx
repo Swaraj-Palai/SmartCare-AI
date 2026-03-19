@@ -81,7 +81,7 @@ const HealthAssistant: React.FC<HealthAssistantProps> = ({ isOnline }) => {
       const apiKey = import.meta.env.VITE_API_KEY || (process.env as any).VITE_API_KEY || (process.env as any).API_KEY;
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: "gemini-1.5-flash",
+        model: "gemini-2.0-flash",
         contents: {
           parts: [
             attachment ? { inlineData: { mimeType: attachment.mimeType, data: attachment.data } } : { text: '' },
@@ -138,7 +138,7 @@ const HealthAssistant: React.FC<HealthAssistantProps> = ({ isOnline }) => {
       const apiKey = import.meta.env.VITE_API_KEY || (process.env as any).VITE_API_KEY || (process.env as any).API_KEY;
       const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
-        model: "gemini-1.5-flash",
+        model: "gemini-2.0-flash",
         contents: [{ parts: [{ text: `Say calmly and clearly: ${analysis.summaryForSpeech}` }] }],
         config: {
           responseModalities: [Modality.AUDIO],

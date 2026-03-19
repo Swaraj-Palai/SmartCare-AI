@@ -126,7 +126,7 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ language, onClose, isOn
       outAudioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
 
       const sessionPromise = ai.live.connect({
-        model: 'gemini-1.5-flash',
+        model: 'gemini-2.5-flash-native-audio-latest',
         config: {
           responseModalities: [Modality.AUDIO],
           speechConfig: {
