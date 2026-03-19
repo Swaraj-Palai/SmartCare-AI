@@ -198,7 +198,7 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
         Format as JSON in ${language.name}.` });
 
       const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash",
+        model: "gemini-2.0-flash-lite",
         contents: { parts: contentParts },
         config: {
           responseMimeType: 'application/json',
