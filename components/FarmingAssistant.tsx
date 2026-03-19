@@ -175,7 +175,8 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
     }
 
     try {
-      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+      const apiKey = import.meta.env.VITE_API_KEY || (process.env as any).VITE_API_KEY || (process.env as any).API_KEY;
+      const ai = new GoogleGenAI({ apiKey });
       const contentParts: any[] = [];
       
       // Only add image/video if there's an attachment
@@ -263,7 +264,8 @@ const FarmingAssistant: React.FC<FarmingAssistantProps> = ({ isOnline }) => {
   const speakAnalysis = async (msgId: string, text: string) => {
     setMessages(prev => prev.map(m => m.id === msgId ? {...m, isSpeaking: true} : m));
     try {
-      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+    const apiKey = import.meta.env.VITE_API_KEY || (process.env as any).VITE_API_KEY || (process.env as any).API_KEY;
+    const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: "gemini-1.5-flash",
         contents: [{ parts: [{ text: `Speak warmly in ${language.name}: ${text}` }] }],

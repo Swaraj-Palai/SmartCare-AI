@@ -119,7 +119,8 @@ const VoiceAssistant: React.FC<VoiceAssistantProps> = ({ language, onClose, isOn
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
+      const apiKey = import.meta.env.VITE_API_KEY || (process.env as any).VITE_API_KEY || (process.env as any).API_KEY;
+      const ai = new GoogleGenAI({ apiKey });
       
       audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 16000 });
       outAudioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
